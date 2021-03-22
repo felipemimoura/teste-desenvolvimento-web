@@ -26,36 +26,59 @@ function GlobalProvider(props) {
     const poke = rows.map(
       ({
         Name,
-        Row,
+        Pokedex_Number,
         Generation,
+        Evolution_Stage,
+        Type_1,
+        Type_2,
+        Weather_1,
+        Weather_2,
+        STAT_TOTAL,
         ATK,
-        Aquireable,
         DEF,
         Evolved,
         FamilyID,
         STA,
+        CP_40,
+        CP_39,
       }) => {
         return {
+          key: Name,
           Name,
-          Row,
+          Pokedex_Number,
           Generation,
+          Evolution_Stage,
+          Type_1,
+          Type_2,
+          Weather_1,
+          Weather_2,
           ATK,
-          Aquireable,
+          STAT_TOTAL,
           DEF,
           Evolved,
           FamilyID,
           STA,
+          CP_40,
+          CP_39,
         };
       }
     );
 
-    pokemons.push(poke);
+    setPokemons(poke);
   };
-  accessSheet();
 
-  console.log(pokemons);
+  useEffect(() => {
+    accessSheet();
+  }, []);
 
-  return <GlobalContext.Provider>{props.children}</GlobalContext.Provider>;
+  const states = { pokemons };
+  const data = { states };
+
+  return (
+    <GlobalContext.Provider value={data}>
+      {props.children}
+    </GlobalContext.Provider>
+  );
 }
 
 export default GlobalProvider;

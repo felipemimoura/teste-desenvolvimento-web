@@ -1,13 +1,11 @@
 import "./App.css";
+import Home from "./Components/Home";
 import GlobalProvider from "./Global/GlobalProvider";
 
-
 function App() {
-
-
   return (
     <GlobalProvider>
-      <h1>Teste</h1>
+      <Home />
     </GlobalProvider>
   );
 }
