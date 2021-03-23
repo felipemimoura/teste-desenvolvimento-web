@@ -72,7 +72,8 @@ function GlobalProvider(props) {
   }, []);
 
   const states = { pokemons };
-  const data = { states };
+  const setters = {setPokemons}
+  const data = { states, setters };
 
   return (
     <GlobalContext.Provider value={data}>
